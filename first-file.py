@@ -4,11 +4,12 @@ import sys
 
 #print() is a function that outputs whatever is inside the brackets
 #numbers don't need speech marks
-
-print(67676767676767676767)
+print(1)
 
 #words need speech marks which make it a string
-print("SIIIIIX SEVVEEEEEN")
+print("You know what's crazy?")
+input()
+print("The low taper fade meme is still MASSIVE")
 
 print(f"Took {time.process_time()} seconds to run.")
 sys.exit()
