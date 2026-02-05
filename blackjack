@@ -1,0 +1,52 @@
+'''This program simulates a game of Blackjack. Planned functionality includes a betting mode and a perfect card counting robot using geometric mean to maximize gain.'''
+
+# Importing dependencies. This includes dataclasses for the cards in the deck and random to deal cards.
+
+from dataclasses import dataclass
+import random
+
+# Creating a dataclass for the cards in the deck including a string for the name of the card, a boolean for whether or not a card is an Ace and a number value for blackjack functionality
+
+@dataclass(frozen=True) # card will be data type that the cards consist of. Because frozen=True, it means that cards can not mutate
+class playing_card:
+    name: str
+    value: int
+    isace: bool
+
+class Deck:
+    def __init__(self):
+       self.cards_in_the_deck = self.fill_the_deck_with_playing_cards()
+       self.shuffle()
+
+    def fill_the_deck_with_playing_cards(self):
+        suits = ['Clubs', 'Hearts', 'Spades', 'Diamonds']
+        ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+        self.cards_in_the_deck = []
+
+        for rank in ranks:
+          for suit in suits:
+                isace = False
+                if rank in ['Jack', 'Queen', 'King']:                    
+                    value = 10
+                elif rank in ['Ace']:
+                    value = 11
+                    isace = True
+                else: 
+                     value = int(rank)
+                new_card = playing_card(
+                name = f"{rank} of {suit}",
+                value = value,
+                isace = isace
+                )
+                self.cards_in_the_deck.append(new_card)
+
+        return self.cards_in_the_deck
+       
+    def shuffle(self):
+       random.shuffle(self.cards_in_the_deck)
+
+deck1 = Deck()
+print(f"Deck has {len(deck1.cards_in_the_deck)} cards.")
+
+for playing_card in deck1.cards_in_the_deck:
+    print(playing_card.name)
