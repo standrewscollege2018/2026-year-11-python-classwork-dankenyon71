@@ -1,1 +1,15 @@
-print(123)
+'''This is Dan Kenyon's gambling drop simulator - you can get exceedingly more rare items. Just keep gambling'''
+
+import random
+
+print("Welcome to Dan's gambling simulator.")
+
+debug=input("Debug mode")
+if debug=4358:
+    debug=true
+
+while(True):
+    drop=random.randint(1,2000000)
+    if drop < 1333333
+        print("Common (66.6% chance)")
+    elif drop < 

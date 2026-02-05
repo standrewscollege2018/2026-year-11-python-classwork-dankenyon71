@@ -4,18 +4,20 @@
 
 from dataclasses import dataclass
 import random
+import time
+time.sleep(99999)
 
 # Creating a dataclass for the cards in the deck including a string for the name of the card, a boolean for whether or not a card is an Ace and a number value for blackjack functionality
 
 @dataclass(frozen=True) # card will be data type that the cards consist of. Because frozen=True, it means that cards can not mutate
 class playing_card:
-    name: str
-    value: int
-    isace: bool
+    playing_card_name: str
+    blackjack_value_from_1_to_11: int
+    is_this_card_an_ace_true_or_false: bool
 
-class Deck:
+class Deck_of_playing_cards:
     def __init__(self):
-       self.cards_in_the_deck = self.fill_the_deck_with_playing_cards()
+       self.the_cards_in_the_deck = self.fill_the_deck_with_playing_cards()
        self.shuffle()
 
     def fill_the_deck_with_playing_cards(self):
@@ -25,18 +27,18 @@ class Deck:
 
         for rank in ranks:
           for suit in suits:
-                isace = False
+                is_this_card_an_ace_true_or_false = False
                 if rank in ['Jack', 'Queen', 'King']:                    
-                    value = 10
+                    blackjack_value_from_1_to_11 = 10
                 elif rank in ['Ace']:
-                    value = 11
-                    isace = True
+                    blackjack_value_from_1_to_11 = 11
+                    is_this_card_an_ace_true_or_false = True
                 else: 
-                     value = int(rank)
+                     blackjack_value_from_1_to_11 = int(rank)
                 new_card = playing_card(
-                name = f"{rank} of {suit}",
-                value = value,
-                isace = isace
+                playing_card_name = f"{rank} of {suit}",
+                blackjack_value = blackjack_value_from_1_to_11,
+                is_this_card_an_ace = is_this_card_an_ace_true_or_false
                 )
                 self.cards_in_the_deck.append(new_card)
 
@@ -45,8 +47,8 @@ class Deck:
     def shuffle(self):
        random.shuffle(self.cards_in_the_deck)
 
-deck1 = Deck()
+deck1 = Deck_of_playing_cards()
 print(f"Deck has {len(deck1.cards_in_the_deck)} cards.")
 
-for playing_card in deck1.cards_in_the_deck:
-    print(playing_card.name)
+for playing_card in deck1.the_cards_in_the_deck:
+    print(playing_card.playing_card_name)
