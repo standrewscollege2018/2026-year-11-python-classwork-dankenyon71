@@ -1,15 +1,36 @@
 '''This is Dan Kenyon's gambling drop simulator - you can get exceedingly more rare items. Just keep gambling'''
 
 import random
+import time
 
 print("Welcome to Dan's gambling simulator.")
 
 debug=input("Debug mode")
-if debug=4358:
+if debug == 4358:
     debug=true
 
-while(True):
-    drop=random.randint(1,2000000)
-    if drop < 1333333
-        print("Common (66.6% chance)")
-    elif drop < 
+num = 0
+inloop = True
+
+while inloop == True:
+    drop = random.randint(1,2000000)
+    num += 1
+    if drop < 1333333:
+        print(f"#{num} Common (66.6% chance)")
+    elif drop < 1833333:
+        print(f"#{num} Uncommon (25.0% chance)")
+    elif drop < 1983333:
+        print(f"#{num} Rare (7.5% chance)")
+    elif drop < 1998333:
+        print(f"#{num} Epic (0.75% chance)")
+    elif drop < 1999833:
+        print (f"#{num} !Legendary! (0.075% chance)")
+    elif drop < 1999933:
+        print(f"#{num} !!Mythic!! (0.005% chance)")
+    elif drop < 2000000:
+        print(f"#{num} !!!RNG!!! (0.0033% chance)")
+    elif drop == 2000000:
+        print(f"#{num} !!!!You win (0.00005% chance)!!!! Congratulations!")
+        inloop = False  
+
+    

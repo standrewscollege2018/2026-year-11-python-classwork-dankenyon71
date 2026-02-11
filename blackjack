@@ -1,54 +1,76 @@
-'''This program simulates a game of Blackjack. Planned functionality includes a betting mode and a perfect card counting robot using geometric mean to maximize gain.'''
+'''This program simulates a game of Blackjack. Planned functionality includes a betting mode and a perfect card counting 
+robot using geometric mean to maximize gain.'''
 
 # Importing dependencies. This includes dataclasses for the cards in the deck and random to deal cards.
 
 from dataclasses import dataclass
 import random
 import time
-time.sleep(99999)
 
-# Creating a dataclass for the cards in the deck including a string for the name of the card, a boolean for whether or not a card is an Ace and a number value for blackjack functionality
+''' Creating a dataclass for the cards in the deck with variables for name of the card, a boolean for ace 
+functionality and a number value for blackjack functionality'''
 
-@dataclass(frozen=True) # card will be data type that the cards consist of. Because frozen=True, it means that cards can not mutate
+@dataclass(frozen=True) # card will be data type that the cards consist of
 class playing_card:
     playing_card_name: str
     blackjack_value_from_1_to_11: int
     is_this_card_an_ace_true_or_false: bool
 
+# Creating a class for a deck of playing cards.
+
 class Deck_of_playing_cards:
-    def __init__(self):
+    def __init__(self): # When a deck is created this function executes and runs the beneath code to establish the properite
        self.the_cards_in_the_deck = self.fill_the_deck_with_playing_cards()
        self.shuffle()
 
-    def fill_the_deck_with_playing_cards(self):
+    def fill_the_deck_with_playing_cards(self): # This function fills the deck with each rank 2 through Ace
         suits = ['Clubs', 'Hearts', 'Spades', 'Diamonds']
         ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-        self.cards_in_the_deck = []
+        self.building_deck = []
 
-        for rank in ranks:
-          for suit in suits:
+        for rank in ranks: # The below code runs once for every rank
+          for suit in suits: # The below creates a new card every time it runs, with the iteration of this and above for
+                # statements determining the rank and suit of the newly created card
                 is_this_card_an_ace_true_or_false = False
                 if rank in ['Jack', 'Queen', 'King']:                    
-                    blackjack_value_from_1_to_11 = 10
+                    blackjack_value_from_1_to_11 = 10 # 10s and face cards value is 10
                 elif rank in ['Ace']:
-                    blackjack_value_from_1_to_11 = 11
-                    is_this_card_an_ace_true_or_false = True
+                    blackjack_value_from_1_to_11 = 11 # If this card is an ace, the value is 10.
+                    is_this_card_an_ace_true_or_false = True # This boolean will make the card add to active ace count,
+                    # which will mean that the ace can be used to add to the correction integer if the player would bust
                 else: 
-                     blackjack_value_from_1_to_11 = int(rank)
+                     blackjack_value_from_1_to_11 = int(rank) # Non face cards/aces value is their number value
                 new_card = playing_card(
-                playing_card_name = f"{rank} of {suit}",
-                blackjack_value = blackjack_value_from_1_to_11,
-                is_this_card_an_ace = is_this_card_an_ace_true_or_false
+                playing_card_name = f"{rank} of {suit}", # We can now display the card in this format e.g 'Jack of Hearts)
+                blackjack_value_from_1_to_11 = blackjack_value_from_1_to_11, # This sets the number value to the value 
+                # established earlier in the logic
+                is_this_card_an_ace_true_or_false = is_this_card_an_ace_true_or_false
                 )
-                self.cards_in_the_deck.append(new_card)
+                self.building_deck.append(new_card) # Adds the card to the list being filled called 
+                # self.building_deck
 
-        return self.cards_in_the_deck
+        return self.building_deck # Returns the deck of cards created in this function
        
     def shuffle(self):
-       random.shuffle(self.cards_in_the_deck)
+       random.shuffle(self.the_cards_in_the_deck) # Shuffles the deck of cards and returns it
 
-deck1 = Deck_of_playing_cards()
-print(f"Deck has {len(deck1.cards_in_the_deck)} cards.")
+class Player_hand_of_cards:
+    def _init_(self): # This code runs to establish the properties of a player hand when it is created
+        self.cards_held = []
+        self.sum_card_value = 0
+        self.ace_correction = 0
+        self.active_ace_count = 0
 
-for playing_card in deck1.the_cards_in_the_deck:
-    print(playing_card.playing_card_name)
+card_deck = Deck_of_playing_cards()
+
+for card in card_deck.the_cards_in_the_deck:
+    print(card.playing_card_name)
+
+print("First deck print done, testing shuffle capabilities.")
+
+card_deck.shuffle()
+
+for card in card_deck.the_cards_in_the_deck:
+    print(card.playing_card_name)
+
+
