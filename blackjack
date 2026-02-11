@@ -63,14 +63,12 @@ class Player_hand_of_cards:
 
 card_deck = Deck_of_playing_cards()
 
-for card in card_deck.the_cards_in_the_deck:
-    print(card.playing_card_name)
+def reshuffle(deck_name):
+    deck_name.the_cards_in_the_deck = deck_name.fill_the_deck_with_playing_cards()
+    deck_name.shuffle
+    return deck_name
 
-print("First deck print done, testing shuffle capabilities.")
-
-card_deck.shuffle()
-
-for card in card_deck.the_cards_in_the_deck:
-    print(card.playing_card_name)
-
-
+print(f"Name: {card_deck.the_cards_in_the_deck[1].playing_card_name}")
+print("Reshuffle")
+card_deck = reshuffle(card_deck)
+print(f"Name: {card_deck.the_cards_in_the_deck[1].playing_card_name}")
