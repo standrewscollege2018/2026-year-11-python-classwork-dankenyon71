@@ -1,0 +1,10 @@
+'''Checks if a barcode is valid, then checks country of origin, manufacturer, and product code'''
+
+barcode = str()
+
+while len(barcode) != 13:
+    barcode = input("Enter valid barcode: ")
+    if len(barcode) != 13:
+        print("This barcode is invalid.")
+
+print(f"Country code is {barcode[0:2]}, manufacturer code is {barcode[2:7]}, product code is {barcode[7:12]}, and check digit is {barcode[12]}")

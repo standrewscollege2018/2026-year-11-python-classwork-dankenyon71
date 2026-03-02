@@ -15,6 +15,7 @@ inloop = True
 while inloop == True:
     drop = random.randint(1,2000000)
     num += 1
+    time.sleep(0.0001)
     if drop < 1333333:
         print(f"#{num} Common (66.6% chance)")
     elif drop < 1833333:

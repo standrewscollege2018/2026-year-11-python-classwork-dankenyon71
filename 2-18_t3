@@ -1,0 +1,12 @@
+'''Asks user for numbers >50 <100 until sum is greater than 100'''
+
+sum = 0
+
+while sum <= 200:
+    add = int(input(f"Enter number to add between 50 and 100: "))
+    if add >= 50 and add <= 100:
+        sum += add
+    else:
+        print(f"{add} not between 50 and 100")
+
+print(f"Final total is {sum}")

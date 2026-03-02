@@ -1,0 +1,9 @@
+'''This program asks for a number and then for a greater number, until a greater number is given.'''
+
+n1 = int(input(f"Enter number: "))
+n2 = (n1-1)
+
+while n2 <= n1:
+    n2 = int(input("Enter a greater number: "))
+
+print(f"Numbers are {n1}, {n2}.")

@@ -1,0 +1,15 @@
+'''This program asks the user for two numbers and gives a message telling them the two numbers they entered, 
+the larger of the two, and the total of the two'''
+
+n1 = int(input("Enter number one: "))
+n2 = int(input("Enter number two: "))
+print(f"The two numbers are {n1}, {n2}")
+
+if n1 > n2:
+    print(f"{n1} is the larger of the two.")
+elif n1 == n2:
+    print(f"{n1} and {n2} are equal.")
+else:
+    print(f"{n2} is the larger of the two.")
+
+print(f"The sum of the numbers is {n1+n2}.")

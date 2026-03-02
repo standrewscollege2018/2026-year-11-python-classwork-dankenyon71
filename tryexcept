@@ -1,0 +1,13 @@
+'''Error catching to prevent invalid data types'''
+
+number = 0
+change = False
+
+while change == False:
+    try:
+        number = int(input("Enter a number: "))
+        change = True
+    except ValueError:
+        print("That's not a number!")
+
+print(f"You entered {number}")
